@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Mon Aug 19 16:53:39 2024
-# Process ID: 40489
+# Start of session at: Fri Aug 30 14:19:28 2024
+# Process ID: 343417
 # Current directory: /home/lachlancomino/Thesis/Project/scpns/litex/build/arty_a7/gateware
 # Command line: vivado -mode batch -source arty_a7.tcl
 # Log file: /home/lachlancomino/Thesis/Project/scpns/litex/build/arty_a7/gateware/vivado.log
@@ -13,12 +13,12 @@
 # Platform          :Ubuntu
 # Operating System  :Ubuntu 22.04.4 LTS
 # Processor Detail  :AMD Ryzen 7 5700X 8-Core Processor
-# CPU Frequency     :3400.003 MHz
+# CPU Frequency     :3400.001 MHz
 # CPU Physical cores:8
 # CPU Logical cores :8
 # Host memory       :8278 MB
 # Swap memory       :2810 MB
 # Total Virtual     :11088 MB
-# Available Virtual :7771 MB
+# Available Virtual :4216 MB
 #-----------------------------------------------------------
 source arty_a7.tcl

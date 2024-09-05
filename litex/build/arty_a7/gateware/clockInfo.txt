@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2024.1
-| Date         : Mon Aug 19 16:56:30 2024
+| Date         : Fri Aug 30 14:22:21 2024
 | Host         : ubuntu-machine
 | Design       : design_1
 | Device       : xc7a35ti-csg324-1L-I-

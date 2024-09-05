@@ -44,6 +44,7 @@ main.o: /home/lachlancomino/repos/litex/litex/soc/software/bios/main.c \
  /home/lachlancomino/repos/litex/litex/soc/software/libbase/spiflash.h \
  /home/lachlancomino/repos/litex/litex/soc/software/libbase/uart.h \
  /home/lachlancomino/repos/litex/litex/soc/software/libbase/i2c.h \
+ /home/lachlancomino/repos/litex/litex/soc/software/libbase/hyperram.h \
  /home/lachlancomino/repos/litex/litex/soc/software/liblitedram/sdram.h \
  /home/lachlancomino/repos/litex/litex/soc/software/liblitedram/utils.h \
  /home/lachlancomino/repos/litex/litex/soc/software/libliteeth/udp.h \
@@ -96,6 +97,7 @@ main.o: /home/lachlancomino/repos/litex/litex/soc/software/bios/main.c \
 /home/lachlancomino/repos/litex/litex/soc/software/libbase/spiflash.h:
 /home/lachlancomino/repos/litex/litex/soc/software/libbase/uart.h:
 /home/lachlancomino/repos/litex/litex/soc/software/libbase/i2c.h:
+/home/lachlancomino/repos/litex/litex/soc/software/libbase/hyperram.h:
 /home/lachlancomino/repos/litex/litex/soc/software/liblitedram/sdram.h:
 /home/lachlancomino/repos/litex/litex/soc/software/liblitedram/utils.h:
 /home/lachlancomino/repos/litex/litex/soc/software/libliteeth/udp.h:

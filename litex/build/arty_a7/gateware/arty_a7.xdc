@@ -281,77 +281,21 @@ set_property LOC K6 [get_ports {ddram_reset_n}]
 set_property SLEW FAST [get_ports {ddram_reset_n}]
 set_property IOSTANDARD SSTL135 [get_ports {ddram_reset_n}]
 
-# eth_clocks:0.tx
-set_property LOC H16 [get_ports {eth_clocks_tx}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_clocks_tx}]
+# user_led:0
+set_property LOC H5 [get_ports {user_led0}]
+set_property IOSTANDARD LVCMOS33 [get_ports {user_led0}]
 
-# eth_clocks:0.rx
-set_property LOC F15 [get_ports {eth_clocks_rx}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_clocks_rx}]
+# user_led:1
+set_property LOC J5 [get_ports {user_led1}]
+set_property IOSTANDARD LVCMOS33 [get_ports {user_led1}]
 
-# eth:0.rst_n
-set_property LOC C16 [get_ports {eth_rst_n}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_rst_n}]
+# user_led:2
+set_property LOC T9 [get_ports {user_led2}]
+set_property IOSTANDARD LVCMOS33 [get_ports {user_led2}]
 
-# eth:0.mdio
-set_property LOC K13 [get_ports {eth_mdio}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_mdio}]
-
-# eth:0.mdc
-set_property LOC F16 [get_ports {eth_mdc}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_mdc}]
-
-# eth:0.rx_dv
-set_property LOC G16 [get_ports {eth_rx_dv}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_rx_dv}]
-
-# eth:0.rx_er
-set_property LOC C17 [get_ports {eth_rx_er}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_rx_er}]
-
-# eth:0.rx_data
-set_property LOC D18 [get_ports {eth_rx_data[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_rx_data[0]}]
-
-# eth:0.rx_data
-set_property LOC E17 [get_ports {eth_rx_data[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_rx_data[1]}]
-
-# eth:0.rx_data
-set_property LOC E18 [get_ports {eth_rx_data[2]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_rx_data[2]}]
-
-# eth:0.rx_data
-set_property LOC G17 [get_ports {eth_rx_data[3]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_rx_data[3]}]
-
-# eth:0.tx_en
-set_property LOC H15 [get_ports {eth_tx_en}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_tx_en}]
-
-# eth:0.tx_data
-set_property LOC H14 [get_ports {eth_tx_data[0]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_tx_data[0]}]
-
-# eth:0.tx_data
-set_property LOC J14 [get_ports {eth_tx_data[1]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_tx_data[1]}]
-
-# eth:0.tx_data
-set_property LOC J13 [get_ports {eth_tx_data[2]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_tx_data[2]}]
-
-# eth:0.tx_data
-set_property LOC H17 [get_ports {eth_tx_data[3]}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_tx_data[3]}]
-
-# eth:0.col
-set_property LOC D17 [get_ports {eth_col}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_col}]
-
-# eth:0.crs
-set_property LOC G14 [get_ports {eth_crs}]
-set_property IOSTANDARD LVCMOS33 [get_ports {eth_crs}]
+# user_led:3
+set_property LOC T10 [get_ports {user_led3}]
+set_property IOSTANDARD LVCMOS33 [get_ports {user_led3}]
 
 # spi:0.clk
 set_property LOC F1 [get_ports {spi_clk}]
@@ -398,17 +342,7 @@ set_property INTERNAL_VREF 0.675 [get_iobanks 34]
 
 create_clock -name clk100 -period 10.0 [get_ports clk100]
 
-create_clock -name eth_rx_clk -period 40.0 [get_nets eth_rx_clk]
-
-create_clock -name eth_tx_clk -period 40.0 [get_nets eth_tx_clk]
-
 set_clock_groups -group [get_clocks -include_generated_clocks -of [get_nets sys_clk]] -group [get_clocks -include_generated_clocks -of [get_nets main_crg_clkin]] -asynchronous
-
-set_clock_groups -group [get_clocks -include_generated_clocks -of [get_nets sys_clk]] -group [get_clocks -include_generated_clocks -of [get_nets eth_rx_clk]] -asynchronous
-
-set_clock_groups -group [get_clocks -include_generated_clocks -of [get_nets sys_clk]] -group [get_clocks -include_generated_clocks -of [get_nets eth_tx_clk]] -asynchronous
-
-set_clock_groups -group [get_clocks -include_generated_clocks -of [get_nets eth_rx_clk]] -group [get_clocks -include_generated_clocks -of [get_nets eth_tx_clk]] -asynchronous
 
 ################################################################################
 # False path constraints

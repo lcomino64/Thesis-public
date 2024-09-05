@@ -9,7 +9,7 @@
 
 
         chosen {
-            bootargs = "console=liteuart earlycon=liteuart,0xf0001000 rootwait root=/dev/ram0 ip=192.168.1.50:192.168.1.100:192.168.1.100:255.255.255.0::eth0:off:::";
+            bootargs = "console=liteuart earlycon=liteuart,0xf0004000 rootwait root=/dev/ram0";
             linux,initrd-start = <0x41000000>;
             linux,initrd-end   = <0x41800000>;
         };
@@ -115,17 +115,6 @@
             reg = <0x40000000 0x10000000>;
         };
 
-        reserved-memory {
-            #address-cells = <1>;
-            #size-cells    = <1>;
-            ranges;
-
-            opensbi@40f00000 {
-                reg = <0x40f00000 0x80000>;
-            };
-
-        };
-
         soc {
             #address-cells = <1>;
             #size-cells    = <1>;
@@ -152,29 +141,25 @@
                 
             };
 
-            liteuart0: serial@f0001000 {
+            liteuart0: serial@f0004000 {
                 compatible = "litex,liteuart";
-                reg = <0xf0001000 0x100>;
+                reg = <0xf0004000 0x100>;
                 interrupts = <1>;
                 status = "okay";
             };
 
-            mac0: mac@f0002000 {
-                compatible = "litex,liteeth";
-                reg = <0xf0002000 0x7c>,
-                      <0xf0002800 0x0a>,
-                      <0x80000000 0x2000>;
-                reg-names = "mac", "mdio", "buffer";
-                litex,rx-slots = <2>;
-                litex,tx-slots = <2>;
-                litex,slot-size = <2048>;
-                interrupts = <3>;
-                status = "okay";
+            leds: gpio@f0002000 {
+                compatible = "litex,gpio";
+                reg = <0xf0002000 0x4>;
+                gpio-controller;
+                #gpio-cells = <2>;
+                litex,direction = "out";
+                status = "disabled";
             };
 
-            litespi0: spi@f0004800 {
+            litespi0: spi@f0003000 {
                 compatible = "litex,litespi";
-                reg = <0xf0004800 0x100>;
+                reg = <0xf0003000 0x100>;
                 status = "okay";
 
                 litespi,max-bpw = <8>;
@@ -192,9 +177,9 @@
                 };
             };
 
-            i2c0: i2c@f0003000 {
+            i2c0: i2c@f0001000 {
                 compatible = "litex,i2c";
-                reg = <0xf0003000 0x5>;
+                reg = <0xf0001000 0x5>;
                 #address-cells = <1>;
                 #size-cells = <0>;
                 status = "okay";
@@ -210,4 +195,9 @@
 
         };
 
+};
+
+&leds {
+        litex,ngpio = <4>;
+        status = "okay";
 };

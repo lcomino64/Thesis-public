@@ -13,7 +13,7 @@
 
 
 #ifdef CONFIG_SMP
-#define RISCV_MSIP_BASE 0xf0010000
+#define MSIP_BASE 0xf0010000
 #endif
 
 #ifndef _ASMLANGUAGE
@@ -104,6 +104,27 @@ static inline void litex_write32(unsigned int value, unsigned long addr)
 	sys_write8(value, addr + 0xC);
 #elif CONFIG_LITEX_CSR_DATA_WIDTH >= 32
 	sys_write32(value, addr);
+#else
+#error Unsupported CSR data width
+#endif
+}
+
+static inline void litex_write64(uint64_t value, unsigned long addr)
+{
+#if CONFIG_LITEX_CSR_DATA_WIDTH == 8
+	sys_write8(value >> 56, addr);
+	sys_write8(value >> 48, addr + 0x4);
+	sys_write8(value >> 40, addr + 0x8);
+	sys_write8(value >> 32, addr + 0xC);
+	sys_write8(value >> 24, addr + 0x10);
+	sys_write8(value >> 16, addr + 0x14);
+	sys_write8(value >> 8, addr + 0x18);
+	sys_write8(value, addr + 0x1C);
+#elif CONFIG_LITEX_CSR_DATA_WIDTH == 32
+	sys_write32(value >> 32, addr);
+	sys_write32(value, addr + 0x4);
+#elif CONFIG_LITEX_CSR_DATA_WIDTH >= 64
+	sys_write64(value, addr);
 #else
 #error Unsupported CSR data width
 #endif

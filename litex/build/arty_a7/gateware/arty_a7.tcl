@@ -10,7 +10,7 @@ set_msg_config -id {Common 17-55} -new_severity {Warning}
 # Add Sources
 
 read_verilog {/home/lachlancomino/repos/pythondata-cpu-vexriscv-smp/pythondata_cpu_vexriscv_smp/verilog/Ram_1w_1rs_Generic.v}
-read_verilog {/home/lachlancomino/repos/pythondata-cpu-vexriscv-smp/pythondata_cpu_vexriscv_smp/verilog/VexRiscvLitexSmpCluster_Cc2_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw128_Ood.v}
+read_verilog {/home/lachlancomino/repos/pythondata-cpu-vexriscv-smp/pythondata_cpu_vexriscv_smp/verilog/VexRiscvLitexSmpCluster_Cc2_Iw32Is4096Iy1_Dw32Ds4096Dy1_ITs4DTs4_Ldw128_Aes_Ood.v}
 read_verilog {/home/lachlancomino/Thesis/Project/scpns/litex/build/arty_a7/gateware/arty_a7.v}
 
 # Add EDIFs

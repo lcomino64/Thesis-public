@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:36:09 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Wed Aug 28 15:46:25 2024
+# Process ID: 230175
+# Current directory: /home/lachlancomino/Thesis/Project/scpns/litex/build/arty_a7/gateware
+# Command line: vivado -mode batch -source arty_a7.tcl
+# Log file: /home/lachlancomino/Thesis/Project/scpns/litex/build/arty_a7/gateware/vivado.log
+# Journal file: /home/lachlancomino/Thesis/Project/scpns/litex/build/arty_a7/gateware/vivado.jou
+# Running On        :ubuntu-machine
+# Platform          :Ubuntu
+# Operating System  :Ubuntu 22.04.4 LTS
+# Processor Detail  :AMD Ryzen 7 5700X 8-Core Processor
+# CPU Frequency     :3400.001 MHz
+# CPU Physical cores:8
+# CPU Logical cores :8
+# Host memory       :8278 MB
+# Swap memory       :2810 MB
+# Total Virtual     :11088 MB
+# Available Virtual :6499 MB
+#-----------------------------------------------------------
+source arty_a7.tcl

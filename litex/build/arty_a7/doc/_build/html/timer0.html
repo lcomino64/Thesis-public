@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>TIMER0 &#8212; LiteX SoC Project  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/default.js"></script>
+    <script src="_static/WaveDrom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Interrupt Controller" href="interrupts.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="timer0">
+<h1>TIMER0<a class="headerlink" href="#timer0" title="Permalink to this headline">¶</a></h1>
+<section id="timer">
+<h2>Timer<a class="headerlink" href="#timer" title="Permalink to this headline">¶</a></h2>
+<p>Provides a generic Timer core.</p>
+<p>The Timer is implemented as a countdown timer that can be used in various modes:</p>
+<ul class="simple">
+<li><p>Polling : Returns current countdown value to software</p></li>
+<li><p>One-Shot: Loads itself and stops when value reaches <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p>Periodic: (Re-)Loads itself when value reaches <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">en</span></code> register allows the user to enable/disable the Timer. When the Timer is enabled, it is
+automatically loaded with the value of <cite>load</cite> register.</p>
+<p>When the Timer reaches <code class="docutils literal notranslate"><span class="pre">0</span></code>, it is automatically reloaded with value of <cite>reload</cite> register.</p>
+<p>The user can latch the current countdown value by writing to <code class="docutils literal notranslate"><span class="pre">update_value</span></code> register, it will
+update <code class="docutils literal notranslate"><span class="pre">value</span></code> register with current countdown value.</p>
+<p>To use the Timer in One-Shot mode, the user needs to:</p>
+<ul class="simple">
+<li><p>Disable the timer</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">load</span></code> register to the expected duration</p></li>
+<li><p>(Re-)Enable the Timer</p></li>
+</ul>
+<p>To use the Timer in Periodic mode, the user needs to:</p>
+<ul class="simple">
+<li><p>Disable the Timer</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">load</span></code> register to 0</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">reload</span></code> register to the expected period</p></li>
+<li><p>Enable the Timer</p></li>
+</ul>
+<p>For both modes, the CPU can be advertised by an IRQ that the duration/period has elapsed. (The
+CPU can also do software polling with <code class="docutils literal notranslate"><span class="pre">update_value</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> to know the elapsed duration)</p>
+</section>
+</section>
+
+    <script type="text/javascript">
+        function init() {
+            WaveDrom.ProcessAll();
+        }
+        window.onload = init;
+    </script>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">LiteX SoC Project</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="interrupts.html">Interrupt Controller</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TIMER0</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="interrupts.html" title="previous chapter">Interrupt Controller</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2024, Anonymous.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/timer0.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

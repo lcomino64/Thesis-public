@@ -11,7 +11,7 @@ class Board:
     soc_kwargs = {
         "integrated_rom_size"  : 0x10000,
         "integrated_sram_size" : 0x4000,
-        "l2_size"              : 0
+        "l2_size"              : 8192
     }
     def __init__(self, soc_cls=None, soc_capabilities={}, soc_constants={}):
         self.soc_cls          = soc_cls
@@ -41,8 +41,8 @@ class ArtyA7(Board):
     soc_kwargs = {
         "variant": "a7-35", 
         "sys_clk_freq": int(100e6), 
-        "with_ethernet" : True,
-        "with_led_chaser" : False,
+        "with_ethernet" : False,
+        "with_led_chaser" : True,
         "with_spi_flash" : False,
         "with_spi_sdcard" : False,
         "with_sdcard" : False,
@@ -57,7 +57,7 @@ class ArtyA7(Board):
 UART_BAUDRATE  = 115200
 TOOLCHAIN      = "vivado"
 CPU_COUNT      = 2
-AES_INSTRUCTION = False
+AES_INSTRUCTION = True 
 
 # Peripheral configuration -----------------------------
 SPI_DATA_WIDTH = 8
@@ -67,7 +67,6 @@ def main():
     board = ArtyA7()
     soc_kwargs = Board.soc_kwargs
     soc_kwargs.update(board.soc_kwargs)
-    soc_kwargs.update(l2_size=8192)
 
     # CPU parameters  
     VexRiscvSMP.cpu_count = CPU_COUNT
@@ -85,24 +84,24 @@ def main():
     soc.add_i2c()
     # soc.add_xadc()
 
-    soc.configure_ethernet(remote_ip="192.168.1.100")
+    # soc.configure_ethernet(remote_ip="192.168.1.100")
 
     # Build
-    builder = Builder(soc, 
-        output_dir = os.path.join("build", "arty_a7"),
-        csr_json   = os.path.join("build", "arty_a7", "csr.json"),
-        csr_csv    = os.path.join("build", "arty_a7", "csr.csv")
-    )  
-    builder.build(build_name="arty_a7")
+    # builder = Builder(soc, 
+    #     output_dir = os.path.join("build", "arty_a7"),
+    #     csr_json   = os.path.join("build", "arty_a7", "csr.json"),
+    #     csr_csv    = os.path.join("build", "arty_a7", "csr.csv")
+    # )  
+    # builder.build(build_name="arty_a7")
 
-    soc.generate_dts("arty_a7")
-    soc.compile_dts("arty_a7")
+    # soc.generate_dts("arty_a7")
+    # soc.compile_dts("arty_a7")
 
     # DTB --------------------------------------------------------------------------------------
     # soc.combine_dtb("arty_a7")
 
     # Generate SoC documentation
-    # soc.generate_doc("arty_a7")
+    soc.generate_doc("arty_a7")
 
 
 if __name__ == "__main__":
